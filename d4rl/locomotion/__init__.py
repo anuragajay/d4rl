@@ -91,7 +91,7 @@ register(
     kwargs={
         'maze_map': maze_env.BIG_MAZE_TEST,
         'reward_type':'sparse',
-        'dataset_url':'https://drive.google.com/file/d/1dpwvGk3RoffF-ZxPhxGJ8yWiRaSWQZgk/view?usp=sharing',
+        'dataset_url':'https://www.dropbox.com/s/qknp3bpfmm61jaq/Ant_maze_big-maze_noisy_multistart_True_multigoal_new_True.hdf5?dl=1',
         'non_zero_reset':False, 
         'eval':True,
         'maze_size_scaling': 4.0,
@@ -107,7 +107,7 @@ register(
     kwargs={
         'maze_map': maze_env.BIG_MAZE_TEST,
         'reward_type':'dense',
-        'dataset_url':'https://drive.google.com/file/d/1dpwvGk3RoffF-ZxPhxGJ8yWiRaSWQZgk/view?usp=sharing',
+        'dataset_url':'https://www.dropbox.com/s/qknp3bpfmm61jaq/Ant_maze_big-maze_noisy_multistart_True_multigoal_new_True.hdf5?dl=1',
         'non_zero_reset':False, 
         'eval':True,
         'maze_size_scaling': 4.0,

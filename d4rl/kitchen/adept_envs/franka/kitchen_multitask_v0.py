@@ -51,11 +51,13 @@ class KitchenV0(robot_env.RobotEnv):
                 **robot_params),
             frame_skip=frame_skip,
             camera_settings=dict(
-                distance=4.5,
-                azimuth=-66,
-                elevation=-65,
+                distance=2.2,
+                azimuth=70,
+                elevation=-35,
+                lookat=[-0.2, .5, 2.],
             ),
         )
+        
         self.init_qpos = self.sim.model.key_qpos[0].copy()
 
         # For the microwave kettle slide hinge
@@ -110,7 +112,7 @@ class KitchenV0(robot_env.RobotEnv):
             'obs_dict': self.obs_dict,
             'rewards': reward_dict,
             'score': score,
-            'images': np.asarray(self.render(mode='rgb_array'))
+            # 'images': np.asarray(self.render(mode='rgb_array'))
         }
         # self.render()
         return obs, reward_dict['r_total'], done, env_info

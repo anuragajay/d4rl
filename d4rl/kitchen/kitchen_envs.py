@@ -31,8 +31,8 @@ class KitchenBase(KitchenTaskRelaxV1, OfflineEnv):
     # A string of element names. The robot's task is then to modify each of
     # these elements appropriately.
     TASK_ELEMENTS = []
-    REMOVE_TASKS_WHEN_COMPLETE = True
-    TERMINATE_ON_TASK_COMPLETE = True
+    REMOVE_TASKS_WHEN_COMPLETE = False
+    TERMINATE_ON_TASK_COMPLETE = False
 
     def __init__(self, dataset_url=None, ref_max_score=None, ref_min_score=None, **kwargs):
         self.tasks_to_complete = set(self.TASK_ELEMENTS)
@@ -86,9 +86,9 @@ class KitchenBase(KitchenTaskRelaxV1, OfflineEnv):
             done = not self.tasks_to_complete
         return obs, reward, done, env_info
 
-    def render(self, mode='human'):
-        # Disable rendering to speed up environment evaluation.
-        return []
+    # def render(self, mode='human'):
+    #     # Disable rendering to speed up environment evaluation.
+    #     return []
 
 
 class KitchenMicrowaveKettleLightSliderV0(KitchenBase):

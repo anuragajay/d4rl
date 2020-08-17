@@ -76,6 +76,7 @@ class KitchenBase(KitchenTaskRelaxV1, OfflineEnv):
             [self.tasks_to_complete.remove(element) for element in completions]
         bonus = float(len(completions))
         reward_dict['bonus'] = bonus
+        reward_dict['success'] = float(bonus == 4.0)
         reward_dict['r_total'] = bonus
         score = bonus
         return reward_dict, score
@@ -84,7 +85,7 @@ class KitchenBase(KitchenTaskRelaxV1, OfflineEnv):
         obs, reward, done, env_info = super(KitchenBase, self).step(a, b=b)
         if self.TERMINATE_ON_TASK_COMPLETE:
             done = not self.tasks_to_complete
-        return obs, reward, done, env_info
+        return obs, reward, done, env_info['rewards']
 
     # def render(self, mode='human'):
     #     # Disable rendering to speed up environment evaluation.

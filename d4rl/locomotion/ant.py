@@ -29,6 +29,7 @@ from d4rl.locomotion import maze_env
 from d4rl import offline_env
 from d4rl.locomotion import wrappers
 
+
 GYM_ASSETS_DIR = os.path.join(
 		os.path.dirname(mujoco_goal_env.__file__),
 		'assets')
@@ -141,7 +142,7 @@ class AntEnv(mujoco_env.MujocoEnv, utils.EzPickle):
 		qvel[:14] = state[15:]
 		qvel[14:] = self.init_qvel[14:]
 		self.set_state(qpos, qvel)
-		return self._get_obs()
+		return self._get_obs()	
 
 	def viewer_setup(self):
 		# self.viewer.cam.trackbodyid = -1
@@ -207,6 +208,11 @@ class AntMazeEnv(maze_env.MazeEnv, GoalReachingAntEnv, offline_env.OfflineEnv):
 	def step_state(self, state, action):
 		self.reset_state(state)
 		return self.step(action)
+	
+	def render_state(self, state, width=500, height=500):
+		self.reset_state(state)
+		img = self.render(mode='rgb_array', width=width, height=height)
+		return img	
 
 def make_ant_maze_env(**kwargs):
 	env = AntMazeEnv(**kwargs)
